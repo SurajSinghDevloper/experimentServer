@@ -28,11 +28,16 @@ app.use(express.json());
 const formDataSchema = new mongoose.Schema({
   name: String,
   email: String,
-  phone: String,
+  mobile: String,
+  latitude: String,
+  longitude: String,
+  area: String,
   address: String,
-  holdingNumber: String,
+  photo: String,
+  consumerNo: String,
+  option: String,
   age: Number,
-  password: String,
+  billOrReading: String,
 });
 
 const FormData = mongoose.model("FormData", formDataSchema);
@@ -45,6 +50,18 @@ app.post("/api/submit-form", async (req, res) => {
     res.status(201).json({ message: "Form data saved successfully" });
   } catch (error) {
     console.error("Error saving form data:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// GET API to retrieve form data
+app.get("/api/form-data", async (req, res) => {
+  try {
+    // Assuming FormData is a model representing your form data
+    const formDataList = await FormData.find(); // Retrieve all form data
+    res.status(200).json(formDataList);
+  } catch (error) {
+    console.error("Error fetching form data:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
