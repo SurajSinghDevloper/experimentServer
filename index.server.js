@@ -32,11 +32,9 @@ const formDataSchema = new mongoose.Schema({
   latitude: String,
   longitude: String,
   area: String,
-  address: String,
   photo: String,
   consumerNo: String,
-  option: String,
-  billOrReading: String,
+  meterReading: String,
 });
 
 const FormData = mongoose.model("FormData", formDataSchema);
