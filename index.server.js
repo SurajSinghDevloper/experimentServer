@@ -36,7 +36,6 @@ const formDataSchema = new mongoose.Schema({
   photo: String,
   consumerNo: String,
   option: String,
-  age: Number,
   billOrReading: String,
 });
 
